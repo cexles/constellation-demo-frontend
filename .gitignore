@@ -1,0 +1,11 @@
+.vscode/
+.next/
+build/
+out/
+node_modules/
+
+.idea
+.vercel
+
+.env
+next-env.d.ts
