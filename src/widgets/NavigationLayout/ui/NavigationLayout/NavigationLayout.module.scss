@@ -1,0 +1,16 @@
+.mainScope {
+  height: calc(100dvh - var(--header-height));
+  overflow: auto;
+}
+
+.main {
+  min-height: calc(100% - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  padding: 96px 0 48px 0;
+  background-color: var(--background-color);
+}
+
+.wrapper {
+  width: var(--window-max-width);
+}

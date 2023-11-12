@@ -1,0 +1,96 @@
+@import '@shared/ui/reusable.scss';
+
+.navigation {
+  z-index: var(--z-header);
+  width: 100%;
+  height: var(--navigation-height);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(var(--gray6-rgb), 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.wrapper {
+  width: var(--window-max-width);
+  display: flex;
+  align-items: center;
+
+  & > div:nth-child(1) {
+    margin-left: -20px;
+  }
+}
+
+.back {
+  @include text_16;
+  @include text_medium;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  color: var(--primary);
+  cursor: pointer;
+
+  & img {
+    filter: var(--primary-filter);
+  }
+
+  &:hover {
+    color: var(--primary-hover);
+
+    & img {
+      filter: var(--primary-hover-filter);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+
+    & img {
+      filter: var(--primary-active-filter);
+    }
+  }
+}
+
+.separator {
+  width: 1px;
+  height: calc(100% - 16px);
+  position: relative;
+  margin: 0 20px 0 20px;
+  background-color: var(--gray4);
+}
+
+.routes {
+  height: 100%;
+  display: flex;
+}
+
+.route {
+  @include text_16;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  color: var(--gray3);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: var(--gray2);
+  }
+
+  &_current {
+    @include text_medium;
+
+    color: var(--gray1);
+  }
+}
+
+.current {
+  pointer-events: none;
+}

@@ -1,0 +1,28 @@
+@import '@shared/ui/reusable.scss';
+
+.header {
+  z-index: var(--z-header);
+  height: var(--header-height);
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
+}
+
+.wrapper {
+  width: var(--window-max-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.navigation {
+  width: 600px;
+  height: 100%;
+}
+
+.controls {
+  width: 140px;
+  display: flex;
+  gap: 12px;
+}

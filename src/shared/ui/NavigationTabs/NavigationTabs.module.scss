@@ -1,0 +1,42 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.tabs {
+  height: 100%;
+  display: flex;
+}
+
+.tab {
+  @include text_18;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray3);
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: var(--gray2);
+  }
+
+  &_current {
+    @include text_bold;
+
+    color: var(--gray1);
+    pointer-events: none;
+  }
+}
+
+.slider {
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--primary);
+  transition: left 100ms;
+}

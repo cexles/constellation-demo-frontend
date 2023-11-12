@@ -1,0 +1,46 @@
+@import '@shared/ui/reusable.scss';
+
+.footer {
+  height: var(--footer-height);
+  display: flex;
+  justify-content: center;
+  background-color: var(--gray1);
+}
+
+.wrapper {
+  width: var(--window-max-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 0 32px 0 32px;
+}
+
+.links {
+  height: 100%;
+  display: flex;
+}
+
+.link {
+  @include text_14;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  color: var(--gray4);
+
+  & > img {
+    filter: var(--gray4-filter);
+  }
+
+  &:hover,
+  &:active {
+    color: var(--gray5);
+
+    & > img {
+      filter: var(--gray5-filter);
+    }
+  }
+}

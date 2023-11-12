@@ -1,0 +1,103 @@
+@use '@app/styles/normalize.scss';
+@use '@app/styles/vars.scss';
+@use '@app/styles/colors.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  --white: #{colors.$white};
+  --black: #{colors.$black};
+  --primary: #{colors.$primary};
+  --primary-hover: #{colors.$primary-hover};
+  --primary-active: #{colors.$primary-active};
+  --gray1: #{colors.$gray1};
+  --gray2: #{colors.$gray2};
+  --gray3: #{colors.$gray3};
+  --gray4: #{colors.$gray4};
+  --gray5: #{colors.$gray5};
+  --gray6: #{colors.$gray6};
+  --gray7: #{colors.$gray7};
+  --gray8: #{colors.$gray8};
+  --red: #{colors.$red};
+  --orange: #{colors.$orange};
+  --green: #{colors.$green};
+  --blue: #{colors.$blue};
+  --table-row-colored: #{colors.$table-row-colored};
+
+  --white-rgb: #{colors.$white-rgb};
+  --black-rgb: #{colors.$black-rgb};
+  --primary-rgb: #{colors.$primary-rgb};
+  --primary-hover-rgb: #{colors.$primary-hover-rgb};
+  --primary-active-rgb: #{colors.$primary-active-rgb};
+  --gray1-rgb: #{colors.$gray1-rgb};
+  --gray2-rgb: #{colors.$gray2-rgb};
+  --gray3-rgb: #{colors.$gray3-rgb};
+  --gray4-rgb: #{colors.$gray4-rgb};
+  --gray5-rgb: #{colors.$gray5-rgb};
+  --gray6-rgb: #{colors.$gray6-rgb};
+  --gray7-rgb: #{colors.$gray7-rgb};
+  --gray8-rgb: #{colors.$gray8-rgb};
+  --red-rgb: #{colors.$red-rgb};
+  --orange-rgb: #{colors.$orange-rgb};
+  --green-rgb: #{colors.$green-rgb};
+  --blue-rgb: #{colors.$blue-rgb};
+
+  --white-filter: #{colors.$white-filter};
+  --black-filter: #{colors.$black-filter};
+  --primary-filter: #{colors.$primary-filter};
+  --primary-hover-filter: #{colors.$primary-hover-filter};
+  --primary-active-filter: #{colors.$primary-active-filter};
+  --gray1-filter: #{colors.$gray1-filter};
+  --gray2-filter: #{colors.$gray2-filter};
+  --gray3-filter: #{colors.$gray3-filter};
+  --gray4-filter: #{colors.$gray4-filter};
+  --gray5-filter: #{colors.$gray5-filter};
+  --red-filter: #{colors.$red-filter};
+  --orange-filter: #{colors.$orange-filter};
+  --green-filter: #{colors.$green-filter};
+  --blue-filter: #{colors.$blue-filter};
+
+  --window-max-width: #{vars.$window-max-width};
+  --header-height: #{vars.$header-height};
+  --navigation-height: #{vars.$navigation-height};
+  --footer-height: #{vars.$footer-height};
+
+  --z-notification: 2100;
+  --z-popup: 1900;
+  --z-modal: 1800;
+  --z-header: 1000;
+}
+
+html[data-theme='light'] {
+  --background-color: var(--gray7);
+  --text-color: var(--gray8);
+
+  scrollbar-color: var(--gray4);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray4);
+}
+
+body {
+  font-family: 'Nunito Sans';
+  font-weight: 400;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+a {
+  color: var(--text-color);
+}

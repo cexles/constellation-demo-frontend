@@ -1,0 +1,65 @@
+$white: #ffffff;
+$black: #11151a;
+$primary: #5850ec;
+$primary-hover: #5145cd;
+$primary-active: #362f78;
+$gray1: #1f2a37;
+$gray2: #4b5563;
+$gray3: #6b7280;
+$gray4: #d1d5db;
+$gray5: #f3f4f6;
+$gray6: #e9eef3;
+$gray7: #f5f7f9;
+$gray8: #303030;
+$red: #f95e5e;
+$orange: #f0bf47;
+$green: #28d984;
+$blue: #7adbf1;
+$table-row-colored: rgba(243, 244, 246, 0.3);
+
+$white-rgb: 255, 255, 255;
+$black-rgb: 17, 21, 26;
+$primary-rgb: 88, 80, 236;
+$primary-hover-rgb: 81, 69, 205;
+$primary-active-rgb: 54, 47, 120;
+$gray1-rgb: 31, 42, 55;
+$gray2-rgb: 75, 85, 99;
+$gray3-rgb: 107, 114, 128;
+$gray4-rgb: 209, 213, 219;
+$gray5-rgb: 243, 244, 246;
+$gray6-rgb: 233, 238, 243;
+$gray7-rgb: 245, 247, 249;
+$gray8-rgb: 48, 48, 48;
+$red-rgb: 249, 94, 94;
+$orange-rgb: 240, 191, 71;
+$green-rgb: 40, 217, 132;
+$blue-rgb: 122, 219, 241;
+
+$white-filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+  brightness(102%) contrast(102%);
+$black-filter: brightness(0) saturate(100%) invert(5%) sepia(10%) saturate(2049%) hue-rotate(173deg)
+  brightness(97%) contrast(92%);
+$primary-filter: brightness(0) saturate(100%) invert(31%) sepia(54%) saturate(6110%)
+  hue-rotate(237deg) brightness(97%) contrast(91%);
+$primary-hover-filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(2318%)
+  hue-rotate(237deg) brightness(100%) contrast(89%);
+$primary-active-filter: brightness(0) saturate(100%) invert(17%) sepia(54%) saturate(1817%)
+  hue-rotate(225deg) brightness(93%) contrast(95%);
+$gray1-filter: brightness(0) saturate(100%) invert(11%) sepia(27%) saturate(888%) hue-rotate(172deg)
+  brightness(92%) contrast(87%);
+$gray2-filter: brightness(0) saturate(100%) invert(33%) sepia(13%) saturate(629%) hue-rotate(176deg)
+  brightness(93%) contrast(90%);
+$gray3-filter: brightness(0) saturate(100%) invert(45%) sepia(6%) saturate(889%) hue-rotate(182deg)
+  brightness(98%) contrast(92%);
+$gray4-filter: brightness(0) saturate(100%) invert(91%) sepia(10%) saturate(119%) hue-rotate(177deg)
+  brightness(93%) contrast(91%);
+$gray5-filter: brightness(0) saturate(100%) invert(93%) sepia(3%) saturate(108%) hue-rotate(182deg)
+  brightness(105%) contrast(95%);
+$red-filter: brightness(0) saturate(100%) invert(51%) sepia(12%) saturate(3175%) hue-rotate(312deg)
+  brightness(99%) contrast(97%);
+$orange-filter: brightness(0) saturate(100%) invert(71%) sepia(79%) saturate(429%)
+  hue-rotate(345deg) brightness(104%) contrast(88%);
+$green-filter: brightness(0) saturate(100%) invert(75%) sepia(43%) saturate(813%) hue-rotate(90deg)
+  brightness(92%) contrast(83%);
+$blue-filter: brightness(0) saturate(100%) invert(75%) sepia(22%) saturate(663%) hue-rotate(144deg)
+  brightness(98%) contrast(105%);
