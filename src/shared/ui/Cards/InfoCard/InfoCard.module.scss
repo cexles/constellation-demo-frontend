@@ -1,0 +1,29 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: var(--gray5);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  &_left {
+    @include text_12;
+
+    color: var(--gray3);
+  }
+
+  &_right {
+    @include text_12;
+
+    color: var(--black);
+    text-align: end;
+  }
+}

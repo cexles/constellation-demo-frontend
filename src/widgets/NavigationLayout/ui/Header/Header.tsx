@@ -39,7 +39,9 @@ export default function Header() {
         <div className={styles.navigation}>
           <NavigationTabs
             value={currentRoute}
-            options={navigationRoutes.map((route) => route.label!)}
+            options={Object.fromEntries(
+              navigationRoutes.map((route) => [route.label, route.label]),
+            )}
             onChange={changeTab}
           />
         </div>

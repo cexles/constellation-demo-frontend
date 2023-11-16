@@ -1,0 +1,16 @@
+.image {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  filter: var(--gray3-filter);
+  transition: all 200ms;
+
+  &:hover,
+  &:focus {
+    filter: var(--primary-filter);
+  }
+
+  &_copied {
+    filter: var(--primary-filter);
+  }
+}

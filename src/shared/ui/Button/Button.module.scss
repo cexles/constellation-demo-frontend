@@ -1,0 +1,113 @@
+@import '@shared/ui/reusable.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 100ms;
+
+  & img {
+    width: 22px;
+    height: 22px;
+  }
+
+  &_xs {
+    @include text_14;
+    @include text_medium;
+
+    padding: 7px 16px 7px 16px;
+  }
+
+  &_s {
+    @include text_14;
+    @include text_medium;
+
+    padding: 11px 20px 11px 20px;
+  }
+
+  &_m {
+    @include text_16;
+    @include text_medium;
+
+    padding: 14px 24px 14px 24px;
+  }
+
+  &_l {
+    @include text_18;
+    @include text_medium;
+
+    gap: 12px;
+    padding: 17px 28px 17px 28px;
+  }
+
+  &_squared {
+    @include text_14;
+    @include text_medium;
+
+    width: 36px;
+    height: 36px;
+  }
+
+  &_outlined {
+    border: 1px solid var(--gray4);
+    background-color: var(--white);
+    color: var(--black);
+
+    & img {
+      filter: var(--gray3-filter);
+    }
+
+    &:hover {
+      background-color: var(--gray4);
+    }
+
+    &:active,
+    &:focus {
+      border: 1px solid var(--gray5);
+      background-color: var(--gray5);
+    }
+
+    &_disabled {
+      border: 1px solid var(--gray4);
+      color: var(--gray3);
+      pointer-events: none;
+    }
+  }
+
+  &_contained {
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--white);
+
+    & img {
+      filter: var(--white-filter);
+    }
+
+    &:hover {
+      border: 1px solid var(--primary-hover);
+      background-color: var(--primary-hover);
+    }
+
+    &:active,
+    &:focus {
+      border: 1px solid var(--primary-active);
+      background-color: var(--primary-active);
+    }
+
+    &_disabled {
+      border: 1px solid var(--gray4);
+      background-color: var(--gray4);
+      color: var(--gray3);
+      pointer-events: none;
+
+      & img {
+        filter: var(--gray3-filter);
+      }
+    }
+  }
+}

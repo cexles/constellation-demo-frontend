@@ -1,0 +1,53 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_left {
+    align-items: flex-start;
+  }
+
+  &_right {
+    align-items: flex-end;
+  }
+}
+
+.popup {
+  @include card;
+
+  z-index: var(--z-popup);
+  position: absolute;
+  top: calc(100% + 2px);
+  border-radius: 12px;
+
+  &_open {
+    animation: appear 200ms;
+  }
+
+  &_close {
+    animation: disappear 200ms;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

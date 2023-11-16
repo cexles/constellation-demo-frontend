@@ -1,0 +1,166 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &_left {
+    justify-content: flex-start;
+  }
+
+  &_right {
+    justify-content: flex-end;
+  }
+}
+
+.calendarImage {
+  width: 20px;
+  height: 20px;
+  filter: var(--gray1-filter);
+}
+
+.picker {
+  @include card;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+
+  &_up {
+    bottom: calc(100% + 2px);
+  }
+
+  &_down {
+    top: calc(100% + 2px);
+  }
+}
+
+.months {
+  display: flex;
+  align-items: center;
+
+  & > div {
+    @include text_secondary_16;
+    @include text_semi;
+
+    width: 50%;
+    color: var(--black);
+    text-align: center;
+  }
+
+  & > img {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    filter: var(--gray3-filter);
+    transition: all 100ms;
+
+    &:hover,
+    &:focus {
+      filter: var(--gray2-filter);
+    }
+
+    &:active {
+      filter: var(--gray1-filter);
+    }
+  }
+
+  & > img:nth-child(4) {
+    transform: rotate(180deg);
+  }
+}
+
+.calendar {
+  display: flex;
+  gap: 24px;
+}
+
+.month {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.weekdays {
+  display: flex;
+  column-gap: 10px;
+}
+
+.weekday {
+  @include text_secondary_12;
+  @include text_semi;
+
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray3);
+}
+
+.days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 4px;
+}
+
+.day {
+  @include text_secondary_12;
+  @include text_semi;
+
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: var(--black);
+  cursor: pointer;
+  transition: all 100ms;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(var(--primary-rgb), 0.1);
+  }
+
+  &:active {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  &_range {
+    background-color: rgba(var(--primary-rgb), 0.1);
+  }
+
+  &_selected {
+    background-color: var(--primary);
+    color: var(--white);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary) !important;
+    }
+  }
+
+  &_out {
+    background-color: unset !important;
+    color: var(--gray4) !important;
+
+    &:hover,
+    &:focus {
+      background-color: unset !important;
+    }
+  }
+}
+
+.actions {
+  & > button {
+    width: 100%;
+  }
+}

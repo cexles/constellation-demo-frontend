@@ -4,28 +4,29 @@ import clsx from 'clsx';
 
 import styles from './NavigationTabs.module.scss';
 
-export default function NavigationTabs({
+export default function NavigationTabs<T extends string | number | symbol>({
   value,
   options,
   onChange,
 }: {
-  value: string;
-  options: string[];
-  onChange: (newValue: string) => void;
+  value: T;
+  options: Record<T, string | React.ReactNode>;
+  onChange: (newValue: T) => void;
 }) {
-  const currentIndex = options.findIndex((option) => option === value);
+  const optionsIds = Object.keys(options) as T[];
+  const currentIndex = optionsIds.findIndex((id) => id === value);
 
   return (
     <div className={styles.container}>
       <div className={styles.tabs}>
-        {options.map((option) => (
+        {optionsIds.map((id) => (
           <div
-            key={option}
-            className={clsx(styles.tab, value === option && styles.tab_current)}
-            style={{ width: `${100 / options.length}%` }}
-            onClick={() => onChange(option)}
+            key={id.toString()}
+            className={clsx(styles.tab, value === id && styles.tab_current)}
+            style={{ width: `${100 / optionsIds.length}%` }}
+            onClick={() => onChange(id)}
           >
-            <div>{option}</div>
+            <div>{options[id]}</div>
           </div>
         ))}
       </div>
@@ -34,8 +35,8 @@ export default function NavigationTabs({
         <div
           className={styles.slider}
           style={{
-            width: `${100 / options.length}%`,
-            left: `${currentIndex * (100 / options.length)}%`,
+            width: `${100 / optionsIds.length}%`,
+            left: `${currentIndex * (100 / optionsIds.length)}%`,
           }}
         />
       )}

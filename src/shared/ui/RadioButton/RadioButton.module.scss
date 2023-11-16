@@ -1,0 +1,70 @@
+@import '@shared/ui/reusable.scss';
+
+.radio {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    & > div:nth-child(1) {
+      background-color: var(--gray5);
+    }
+  }
+
+  &_current {
+    pointer-events: none;
+
+    & > div:nth-child(1) {
+      background-color: var(--white) !important;
+    }
+  }
+
+  &_disabled {
+    pointer-events: none;
+  }
+}
+
+.mark {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--gray4);
+  background-color: var(--white);
+  transition: all 100ms;
+
+  &_disabled {
+    background-color: var(--gray4);
+  }
+}
+
+.check {
+  width: 12px;
+  height: 12px;
+  display: none;
+  border-radius: 50%;
+  transition: all 100ms;
+
+  &_current {
+    display: block;
+    background-color: var(--primary);
+  }
+
+  &_disabled {
+    background-color: var(--gray3);
+  }
+}
+
+.label {
+  @include text_16;
+  @include text_medium;
+
+  color: var(--black);
+  user-select: none;
+}

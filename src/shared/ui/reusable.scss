@@ -33,6 +33,13 @@
   line-height: 28px;
 }
 
+@mixin text_40 {
+  font-family: 'Nunito Sans';
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 54px;
+}
+
 @mixin text_secondary_10 {
   font-family: 'Inter';
   font-weight: 400;
@@ -61,6 +68,10 @@
   line-height: 24px;
 }
 
+@mixin text_semi {
+  font-weight: 500;
+}
+
 @mixin text_medium {
   font-weight: 600;
 }
@@ -69,10 +80,36 @@
   font-weight: 700;
 }
 
-@mixin card {
+@mixin card($clickable: false) {
   padding: 16px;
   border-radius: 8px;
   border: 1px solid var(--gray5);
   background-color: var(--white);
   box-shadow: 0px 7px 7px 0px #00000005;
+  transition: all 100ms;
+
+  @if $clickable {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 7px 7px 0px #0000000a;
+    }
+  }
+}
+
+@mixin link {
+  @include text_14;
+  @include text_medium;
+
+  color: var(--primary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:focus,
+  &:active {
+    color: var(--primary-active);
+  }
 }

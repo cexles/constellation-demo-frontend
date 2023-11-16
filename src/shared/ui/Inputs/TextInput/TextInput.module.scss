@@ -1,0 +1,170 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  & img {
+    width: 22px;
+    height: 22px;
+    filter: var(--gray3-filter);
+  }
+}
+
+.label {
+  @include text_medium;
+
+  color: var(--black);
+  user-select: none;
+
+  &_s {
+    @include text_12;
+  }
+
+  &_m {
+    @include text_14;
+  }
+
+  &_l {
+    @include text_16;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: 0 0 0 1px var(--gray4) inset;
+  cursor: text;
+  transition: all 100ms;
+
+  &:hover {
+    box-shadow: 0 0 0 2px var(--gray4) inset;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--gray3) inset;
+  }
+
+  &_s {
+    padding: 10px 16px;
+  }
+
+  &_m {
+    padding: 12px 16px;
+  }
+
+  &_l {
+    padding: 14px 16px;
+  }
+
+  &_warn {
+    box-shadow: 0 0 0 1px var(--orange) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--orange) inset;
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px var(--orange) inset;
+    }
+  }
+
+  &_error {
+    box-shadow: 0 0 0 1px var(--red) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--red) inset;
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px var(--red) inset;
+    }
+  }
+
+  &_disabled {
+    pointer-events: none;
+  }
+}
+
+.input {
+  width: 100%;
+  border: none;
+  background-color: unset;
+  color: var(--black);
+  outline: none;
+
+  &_s {
+    @include text_secondary_12;
+    @include text_semi;
+
+    &::placeholder {
+      @include text_secondary_12;
+      @include text_semi;
+    }
+  }
+
+  &_m {
+    @include text_secondary_14;
+    @include text_semi;
+
+    &::placeholder {
+      @include text_secondary_14;
+      @include text_semi;
+    }
+  }
+
+  &_l {
+    @include text_secondary_16;
+    @include text_semi;
+
+    &::placeholder {
+      @include text_secondary_16;
+      @include text_semi;
+    }
+  }
+
+  &::placeholder {
+    color: var(--gray3);
+    user-select: none;
+  }
+
+  &:disabled {
+    color: var(--gray3);
+  }
+}
+
+.message {
+  &_s {
+    @include text_12;
+
+    min-height: 18px;
+  }
+
+  &_m {
+    @include text_12;
+
+    min-height: 18px;
+  }
+
+  &_l {
+    @include text_14;
+
+    min-height: 20px;
+  }
+
+  &_hint {
+    color: var(--gray3);
+  }
+
+  &_warn {
+    color: var(--orange);
+  }
+
+  &_error {
+    color: var(--red);
+  }
+}

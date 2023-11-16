@@ -1,0 +1,29 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  &_primary {
+    @include text_20;
+    @include text_bold;
+
+    color: var(--black);
+  }
+
+  &_secondary {
+    @include text_secondary_12;
+
+    color: var(--gray3);
+  }
+}
