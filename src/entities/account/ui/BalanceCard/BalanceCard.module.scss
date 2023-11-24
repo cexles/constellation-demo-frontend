@@ -1,0 +1,23 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: rgba(var(--gray4-rgb), 0.2);
+}
+
+.title {
+  @include text_14;
+
+  color: var(--gray3);
+}
+
+.balance {
+  @include text_40;
+  @include text_bold;
+
+  color: var(--black);
+}

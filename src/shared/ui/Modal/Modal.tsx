@@ -24,11 +24,11 @@ export default function Modal({
   const [isOpen, setOpen] = useState(false);
 
   const handleClose = () => {
+    setOpen(false);
+
     if (isOpen) {
       setTimeout(router.back, 200);
     }
-
-    setOpen(false);
   };
 
   useEffect(() => {

@@ -1,0 +1,45 @@
+@import '@shared/ui/reusable.scss';
+
+.extended {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.normal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & > img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.primary {
+  @include text_14;
+  @include text_medium;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--black);
+
+  & > div:nth-child(2) {
+    text-align: end;
+  }
+}
+
+.secondary {
+  @include text_12;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--gray3);
+
+  & > div:nth-child(2) {
+    text-align: end;
+  }
+}

@@ -1,0 +1,48 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.internal {
+  @include text_14;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray3);
+  cursor: pointer;
+  transition: all 100ms;
+
+  & > img {
+    width: 20px;
+    height: 20px;
+    filter: var(--gray3-filter);
+    transition: all 100ms;
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+
+    & > img {
+      filter: var(--primary-active-filter);
+    }
+  }
+
+  &_active {
+    color: var(--primary);
+
+    & > img {
+      filter: var(--primary-filter);
+    }
+  }
+}

@@ -1,0 +1,200 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  position: relative;
+  outline: none;
+}
+
+.label {
+  @include text_medium;
+
+  color: var(--black);
+  user-select: none;
+
+  &_s {
+    @include text_12;
+  }
+
+  &_m {
+    @include text_14;
+  }
+
+  &_l {
+    @include text_16;
+  }
+}
+
+.selector {
+  @include text_semi;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--black);
+  box-shadow: 0 0 0 1px var(--gray4) inset;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 100ms;
+
+  &:hover {
+    box-shadow: 0 0 0 2px var(--gray4) inset;
+  }
+
+  &_s {
+    @include text_secondary_12;
+
+    padding: 10px 14px;
+  }
+
+  &_m {
+    @include text_secondary_14;
+
+    padding: 12px 16px;
+  }
+
+  &_l {
+    @include text_secondary_16;
+
+    padding: 14px 16px;
+  }
+
+  &_warn {
+    box-shadow: 0 0 0 1px var(--orange) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--orange) inset;
+    }
+  }
+
+  &_error {
+    box-shadow: 0 0 0 1px var(--red) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--red) inset;
+    }
+  }
+
+  &_opened {
+    box-shadow: 0 0 0 2px var(--gray3) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--gray3) inset;
+    }
+  }
+
+  &_disabled {
+    pointer-events: none;
+  }
+}
+
+.arrow {
+  width: 22px;
+  height: 22px;
+  filter: var(--gray3-filter);
+  transform: rotate(-90deg);
+  transition: transform 200ms;
+
+  &_opened {
+    filter: var(--black-filter);
+    transform: rotate(-270deg);
+  }
+
+  &_disabled {
+    filter: var(--gray3-filter);
+    transform: rotate(-90deg);
+  }
+}
+
+.optionsContainer {
+  @include card;
+
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  padding: 6px 4px 6px 6px;
+
+  &_down {
+    top: calc(100% + 2px);
+  }
+
+  &_up {
+    bottom: calc(100% + 2px);
+  }
+}
+
+.options {
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 2px 0 0;
+  overflow: auto;
+}
+
+.option {
+  @include text_secondary_14;
+
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 50ms;
+
+  &:hover {
+    background-color: rgba(var(--gray5-rgb), 0.5);
+  }
+
+  &_selected {
+    @include text_semi;
+
+    background-color: var(--gray5);
+  }
+}
+
+.message {
+  &_s {
+    @include text_12;
+
+    min-height: 18px;
+  }
+
+  &_m {
+    @include text_12;
+
+    min-height: 18px;
+  }
+
+  &_l {
+    @include text_14;
+
+    min-height: 20px;
+  }
+
+  &_hint {
+    color: var(--gray3);
+  }
+
+  &_warn {
+    color: var(--orange);
+  }
+
+  &_error {
+    color: var(--red);
+  }
+}
+
+.text {
+  @include text_12;
+
+  padding: 12px;
+  border-radius: 4px;
+  background-color: var(--gray5);
+  color: var(--gray2);
+}

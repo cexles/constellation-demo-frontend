@@ -1,0 +1,36 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  @include text_14;
+
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray3);
+  cursor: pointer;
+  transition: all 100ms;
+
+  & > img {
+    width: 20px;
+    height: 20px;
+    filter: var(--gray3-filter);
+  }
+
+  &:hover {
+    color: var(--gray2);
+
+    & > img {
+      filter: var(--gray2-filter);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--gray1);
+
+    & > img {
+      filter: var(--gray1-filter);
+    }
+  }
+}

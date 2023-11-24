@@ -1,5 +1,5 @@
 {
-  "name": "bankvabank",
+  "name": "cexles",
   "version": "1.0.0",
   "private": false,
   "scripts": {
@@ -7,13 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --max-warnings=0",
-    "format": "prettier . --write",
+    "format": "prettier --write",
     "prepare": "husky install"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.2.0",
     "@tanstack/react-table": "^8.10.7",
+    "axios": "^1.6.2",
     "clsx": "^2.0.0",
+    "cookies-next": "^4.1.0",
+    "ethers": "^5.7.2",
     "moment": "^2.29.4",
     "next": "^13.5.3",
     "react": "^18.2.0",
@@ -21,6 +24,7 @@
     "react-input-mask": "^3.0.0-alpha.2",
     "react-use": "^17.4.0",
     "sharp": "^0.32.6",
+    "siwe": "^2.1.4",
     "viem": "^1.18.8",
     "wagmi": "^1.4.5",
     "zustand": "^4.4.6"

@@ -1,14 +1,14 @@
 import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet, ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createConfig } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
+import { configureChains, createConfig, sepolia } from 'wagmi';
+import { avalancheFuji, polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
-const appName = process.env.NEXT_PUBLIC_APP_NAME || '';
-const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || '';
+const appName = process.env.NEXT_PUBLIC_APP_NAME!;
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID!;
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
+  [sepolia, polygonMumbai, avalancheFuji],
   [publicProvider()],
 );
 

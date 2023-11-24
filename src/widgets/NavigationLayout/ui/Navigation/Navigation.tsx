@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import { routes } from '@widgets/NavigationLayout/config/routes';
+import { NavigationRoute } from '@widgets/NavigationLayout/model/types';
 import ArrowLeftIcons from '@public/icons/arrow-left.svg';
 
 import styles from './Navigation.module.scss';
@@ -13,8 +15,16 @@ import styles from './Navigation.module.scss';
 export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
-  const currentRoute = routes.find((route) => route.pattern.test(pathname));
-  const subroutes = currentRoute?.subRoutes.filter((route) => route.label) || [];
+  const [currentRoute, setCurrentRoute] = useState<NavigationRoute>();
+
+  useEffect(() => {
+    const route = routes.find((r) => r.pattern.test(pathname));
+
+    if (!route?.keep) {
+      setCurrentRoute(route);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <nav className={styles.navigation}>
@@ -27,10 +37,12 @@ export default function Navigation() {
           </div>
         )}
 
-        {currentRoute?.withBack && subroutes.length > 0 && <div className={styles.separator} />}
+        {currentRoute?.withBack && currentRoute.subRoutes && currentRoute.subRoutes.length > 0 && (
+          <div className={styles.separator} />
+        )}
 
         <div className={styles.routes}>
-          {subroutes.map((route) => (
+          {currentRoute?.subRoutes?.map((route) => (
             <Link
               key={route.label}
               href={route.href || route.hrefFn?.(pathname) || ''}

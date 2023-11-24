@@ -20,22 +20,18 @@ export const routes: NavigationRoute[] = [
   },
   {
     pattern: /^\/investment/i,
-    label: 'Investment',
     href: '/investment',
-    subRoutes: [],
   },
   {
     pattern: /^\/protocol/i,
-    label: 'Protocol',
     href: '/protocol',
-    subRoutes: [],
   },
   {
     pattern: /^\/documentation/i,
     label: 'Documentation',
     href: '/documentation',
-    subRoutes: [],
   },
+
   {
     pattern: /^\/account/i,
     subRoutes: [
@@ -59,27 +55,39 @@ export const routes: NavigationRoute[] = [
   },
   {
     pattern: /^\/new-account$/i,
-    subRoutes: [],
     withBack: true,
   },
   {
     pattern: /^\/deposit$/i,
-    subRoutes: [],
     withBack: true,
   },
   {
     pattern: /^\/transfer$/i,
-    subRoutes: [],
     withBack: true,
   },
   {
     pattern: /^\/privacy-policy$/i,
-    subRoutes: [],
     withBack: true,
   },
   {
     pattern: /^\/terms$/i,
-    subRoutes: [],
     withBack: true,
+  },
+
+  {
+    pattern: /^\/edit-member\/[a-z0-9]+$/i,
+    keep: true,
+  },
+  {
+    pattern: /^\/new-member$/i,
+    keep: true,
+  },
+  {
+    pattern: /^\/notifications$/i,
+    keep: true,
+  },
+  {
+    pattern: /^\/transaction\/[a-z0-9]+$/i,
+    keep: true,
   },
 ];

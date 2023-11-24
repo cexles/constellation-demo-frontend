@@ -1,0 +1,13 @@
+.container {
+  & > button {
+    width: 100%;
+  }
+}
+
+.image {
+  filter: var(--primary-filter) !important;
+}
+
+.text {
+  color: var(--primary);
+}

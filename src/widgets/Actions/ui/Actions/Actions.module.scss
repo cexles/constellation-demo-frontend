@@ -1,0 +1,84 @@
+@import '@shared/ui/reusable.scss';
+
+.all {
+  @include text_16;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+
+  & > img {
+    width: 22px;
+    height: 22px;
+    filter: var(--primary-filter);
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    color: var(--primary-hover);
+
+    & > img {
+      filter: var(--primary-hover-filter);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+
+    & > img {
+      filter: var(--primary-active-filter);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: 16px;
+
+  & > a {
+    width: calc(100% / 2);
+  }
+}
+
+.card {
+  @include card(true);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.image {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: var(--gray5);
+
+  & > img {
+    width: 22px;
+    height: 22px;
+    filter: var(--gray2-filter);
+  }
+}
+
+.title {
+  @include text_16;
+  @include text_medium;
+
+  color: var(--gray1);
+  margin-right: auto;
+}
+
+.arrow {
+  width: 22px;
+  height: 22px;
+  filter: var(--gray3-filter);
+  transform: rotate(180deg);
+}

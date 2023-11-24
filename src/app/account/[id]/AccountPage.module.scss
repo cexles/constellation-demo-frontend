@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  gap: 48px;
+}
+
+.account {
+  width: 400px;
+}
+
+.section {
+  width: calc(100% - 400px - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}

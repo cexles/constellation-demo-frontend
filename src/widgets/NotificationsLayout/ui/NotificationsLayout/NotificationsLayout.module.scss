@@ -1,0 +1,14 @@
+.container {
+  z-index: var(--z-notification);
+  width: 350px;
+  position: absolute;
+  top: calc(var(--header-height) + var(--navigation-height) + 16px);
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &_top {
+    top: 16px;
+  }
+}

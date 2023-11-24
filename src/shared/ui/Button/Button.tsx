@@ -1,7 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef } from 'react';
 import clsx from 'clsx';
+
+import LoaderIcon from '@public/icons/loader.svg';
 
 import styles from './Button.module.scss';
 
@@ -9,12 +12,14 @@ export default function Button({
   children,
   variant = 'outlined',
   size = 'm',
+  loading,
   disabled,
   onClick,
 }: {
   children: React.ReactNode;
   variant?: 'outlined' | 'contained';
   size?: 'xs' | 's' | 'm' | 'l' | 'squared';
+  loading?: boolean;
   disabled?: boolean;
   onClick: (
     e:
@@ -60,6 +65,7 @@ export default function Button({
         styles.button,
         styles[`button_${size}`],
         styles[`button_${variant}`],
+        loading && styles[`button_${variant}_loading`],
         disabled && styles[`button_${variant}_disabled`],
       )}
       disabled={disabled}
@@ -68,7 +74,7 @@ export default function Button({
       onTouchEnd={handleTouchEnd}
       onKeyDown={handleKeyDown}
     >
-      {children}
+      {loading ? <Image src={LoaderIcon} alt="Loader" draggable="false" /> : children}
     </button>
   );
 }

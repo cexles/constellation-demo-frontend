@@ -8,6 +8,7 @@ import {
   SortingState,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
@@ -29,6 +30,7 @@ function DefaultTable<T>({
   loading,
   headerStyles,
   rowStyles,
+  manualSorting = true,
   onSortingChange,
   onRowClick,
 }: {
@@ -42,6 +44,7 @@ function DefaultTable<T>({
   loading?: boolean;
   headerStyles?: string;
   rowStyles?: string;
+  manualSorting?: boolean;
   onSortingChange?: OnChangeFn<SortingState>;
   onRowClick?: (id: string) => void;
 }) {
@@ -54,8 +57,9 @@ function DefaultTable<T>({
       pagination: pagination && { pageIndex: pagination.page - 1, pageSize: pagination.perPage },
     },
     onSortingChange,
+    getSortedRowModel: getSortedRowModel(),
     getCoreRowModel: getCoreRowModel(),
-    manualSorting: true,
+    manualSorting,
     manualPagination: true,
   });
 
@@ -92,7 +96,13 @@ function DefaultTable<T>({
             </div>
           ))}
 
-        <div className={clsx(styles.body, withoutHeader && styles.body_withoutHeader)}>
+        <div
+          className={clsx(
+            styles.body,
+            withoutHeader && styles.body_withoutHeader,
+            !pagination && styles.body_withoutPagination,
+          )}
+        >
           {!loading &&
             table.getRowModel().rows.map((row, rowIndex) => (
               <div

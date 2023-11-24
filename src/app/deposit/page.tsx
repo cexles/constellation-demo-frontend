@@ -1,3 +1,9 @@
+import { PageWithTitle } from '@shared/ui';
+
 export default function DepositPage() {
-  return <div>DepositPage</div>;
+  return (
+    <PageWithTitle title="Deposit">
+      <div />
+    </PageWithTitle>
+  );
 }

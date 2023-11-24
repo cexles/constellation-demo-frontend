@@ -1,0 +1,95 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  @include card;
+
+  display: flex;
+  gap: 12px;
+  padding: 16px 16px 16px 12px;
+  transition:
+    transform 300ms,
+    box-shadow 150ms;
+
+  &_open {
+    transform: translateX(0);
+  }
+
+  &_close {
+    transform: translateX(calc(100% + 16px));
+  }
+
+  &_shown {
+    box-shadow: none !important;
+  }
+
+  &_clickable {
+    @include card(true);
+  }
+}
+
+.type {
+  width: 4px;
+  border-radius: 4px;
+
+  &_default {
+    background-color: var(--blue);
+  }
+
+  &_warn {
+    background-color: var(--orange);
+  }
+
+  &_error {
+    background-color: var(--red);
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timestamp {
+  @include text_12;
+
+  color: var(--gray3);
+
+  &_shown {
+    color: var(--gray4);
+  }
+}
+
+.text {
+  @include text_14;
+
+  color: var(--gray1);
+
+  &_shown {
+    color: var(--gray3);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.close {
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+  filter: var(--gray4-filter);
+  cursor: pointer;
+  transition: all 100ms;
+
+  &:hover {
+    filter: var(--gray3-filter);
+  }
+
+  &:active,
+  &:focus {
+    filter: var(--gray2-filter);
+  }
+}
