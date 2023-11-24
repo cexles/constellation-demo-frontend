@@ -1,3 +1,5 @@
+import { Assets } from '@widgets/Assets';
+
 export default function DashboardMainPage() {
-  return <div />;
+  return <Assets />;
 }

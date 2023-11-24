@@ -1,0 +1,45 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.image {
+  height: 32px;
+  padding-right: 16px;
+  border-right: 1px solid var(--gray5);
+
+  & > img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  @include text_16;
+  @include text_bold;
+
+  color: var(--black);
+  text-align: start;
+}
+
+.networks {
+  display: flex;
+}
+
+.network {
+  width: 12px;
+
+  & > img {
+    width: 20px;
+    height: 20px;
+  }
+}
