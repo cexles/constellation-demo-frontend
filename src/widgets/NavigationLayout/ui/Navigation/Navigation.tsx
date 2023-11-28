@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
@@ -15,6 +15,7 @@ import styles from './Navigation.module.scss';
 export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentRoute, setCurrentRoute] = useState<NavigationRoute>();
 
   useEffect(() => {
@@ -26,10 +27,17 @@ export default function Navigation() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  if (
+    (!currentRoute?.withBack || searchParams.get('back') === 'false') &&
+    (!currentRoute?.subRoutes || currentRoute?.subRoutes?.length === 0)
+  ) {
+    return null;
+  }
+
   return (
     <nav className={styles.navigation}>
       <div className={styles.wrapper}>
-        {currentRoute?.withBack && (
+        {currentRoute?.withBack && searchParams.get('back') !== 'false' && (
           <div className={styles.back} onClick={router.back}>
             <Image src={ArrowLeftIcons} alt="Back" draggable="false" />
 

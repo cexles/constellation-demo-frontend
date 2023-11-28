@@ -63,11 +63,27 @@
     padding: 14px 16px;
   }
 
+  &_opened {
+    box-shadow: 0 0 0 2px var(--gray3) inset;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--gray3) inset;
+    }
+  }
+
   &_warn {
     box-shadow: 0 0 0 1px var(--orange) inset;
 
     &:hover {
       box-shadow: 0 0 0 2px var(--orange) inset;
+    }
+
+    &_opened {
+      box-shadow: 0 0 0 2px var(--orange) inset;
+
+      &:hover {
+        box-shadow: 0 0 0 2px var(--orange) inset;
+      }
     }
   }
 
@@ -77,13 +93,13 @@
     &:hover {
       box-shadow: 0 0 0 2px var(--red) inset;
     }
-  }
 
-  &_opened {
-    box-shadow: 0 0 0 2px var(--gray3) inset;
+    &_opened {
+      box-shadow: 0 0 0 2px var(--red) inset;
 
-    &:hover {
-      box-shadow: 0 0 0 2px var(--gray3) inset;
+      &:hover {
+        box-shadow: 0 0 0 2px var(--red) inset;
+      }
     }
   }
 
@@ -93,8 +109,8 @@
 }
 
 .arrow {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   filter: var(--gray3-filter);
   transform: rotate(-90deg);
   transition: transform 200ms;
@@ -159,6 +175,9 @@
 }
 
 .message {
+  position: absolute;
+  left: 4px;
+
   &_s {
     @include text_12;
 

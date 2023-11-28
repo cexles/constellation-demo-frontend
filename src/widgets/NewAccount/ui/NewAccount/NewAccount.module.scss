@@ -1,0 +1,77 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  @include card;
+
+  width: 500px;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.variant {
+  height: 64px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 64px 48px 48px 48px;
+  border-top: 1px solid var(--gray5);
+}
+
+.fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.radio {
+  display: flex;
+  gap: 24px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: rgba(var(--blue-rgb), 0.1);
+}
+
+.aboutTitle {
+  @include text_14;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray1);
+
+  & > img {
+    width: 16px;
+    height: 16px;
+    filter: var(--blue-filter);
+  }
+}
+
+.aboutText {
+  @include text_12;
+
+  color: var(--gray3);
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

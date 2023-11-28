@@ -9,7 +9,7 @@ export interface UserStore {
   setStatus: (status: AuthenticationStatus) => void;
 }
 
-export type NotificationType = 'default' | 'warning' | 'error';
+export type NotificationType = 'default' | 'warning' | 'error' | 'success';
 
 export interface Notification {
   id: string;
@@ -19,6 +19,8 @@ export interface Notification {
   isNew: boolean;
   shown: boolean;
   withActions: boolean;
+  onClick?: () => void;
+  onClose?: () => void;
 }
 
 export interface NotificationsStore {

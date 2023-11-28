@@ -10,6 +10,7 @@ import styles from './NetworkSelector.module.scss';
 export default function NetworkSelector<T extends string | string[]>({
   value,
   placeholder = 'Select network',
+  error,
   variant = 'default',
   size = 'm',
   direction = 'down',
@@ -18,6 +19,7 @@ export default function NetworkSelector<T extends string | string[]>({
 }: {
   value: T;
   placeholder?: string;
+  error?: string;
   variant?: 'default' | 'extended';
   size?: 's' | 'm' | 'l';
   direction?: 'up' | 'down';
@@ -50,13 +52,12 @@ export default function NetworkSelector<T extends string | string[]>({
                 network.id,
                 <div className={styles.extended}>
                   <div className={styles.primary}>
-                    <div>{network.symbol}</div>
-                    <div>{`~ ${network.arrivalTime} mins`}</div>
-                  </div>
+                    <Image src={network.icon} alt={network.symbol} draggable="false" />
 
-                  <div className={styles.secondary}>
-                    <div>{network.name}</div>
-                    <div>{`${network.confirmations} Confirmation/s`}</div>
+                    <div>
+                      {network.name}
+                      {network.network && <span>({network.network})</span>}
+                    </div>
                   </div>
                 </div>,
               ]),
@@ -77,6 +78,7 @@ export default function NetworkSelector<T extends string | string[]>({
           : ''
       }
       size={size}
+      error={error}
       direction={direction}
       disabled={disabled}
       onChange={onChange}

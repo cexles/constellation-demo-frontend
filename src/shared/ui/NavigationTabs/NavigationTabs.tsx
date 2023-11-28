@@ -7,10 +7,12 @@ import styles from './NavigationTabs.module.scss';
 export default function NavigationTabs<T extends string | number | symbol>({
   value,
   options,
+  disabled,
   onChange,
 }: {
   value: T;
   options: Record<T, string | React.ReactNode>;
+  disabled?: boolean;
   onChange: (newValue: T) => void;
 }) {
   const optionsIds = Object.keys(options) as T[];
@@ -22,7 +24,11 @@ export default function NavigationTabs<T extends string | number | symbol>({
         {optionsIds.map((id) => (
           <div
             key={id.toString()}
-            className={clsx(styles.tab, value === id && styles.tab_current)}
+            className={clsx(
+              styles.tab,
+              value === id && styles.tab_current,
+              disabled && styles.tab_disabled,
+            )}
             style={{ width: `${100 / optionsIds.length}%` }}
             onClick={() => onChange(id)}
           >

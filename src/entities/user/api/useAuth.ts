@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-import { useEffectOnce } from 'react-use';
 import { setCookie, deleteCookie, getCookie } from 'cookies-next';
 import moment from 'moment';
 
 import { useNotificationsStore, useUserStore } from '@entities/user';
+import { useAccountsStore } from '@entities/account';
 import api from '@shared/config/api.config';
 import { parseJwt } from '@shared/lib/parsers';
 
@@ -21,7 +21,8 @@ interface RefreshResponse {
 export function useAuth() {
   const refreshTimeout = useRef<NodeJS.Timeout>();
   const router = useRouter();
-  const user = useUserStore();
+  const setUserStatus = useUserStore((state) => state.setStatus);
+  const setInternalAccounts = useAccountsStore((state) => state.setInternalAccounts);
   const pushNotification = useNotificationsStore((state) => state.push);
 
   const updateCookie = (token: string | undefined) => {
@@ -37,8 +38,9 @@ export function useAuth() {
   const logout = () => {
     clearTimeout(refreshTimeout.current);
     updateCookie(undefined);
+    setUserStatus('unauthenticated');
+    setInternalAccounts([]);
     router.push('/auth');
-    user.setStatus('unauthenticated');
   };
 
   const refresh = async () => {
@@ -61,7 +63,7 @@ export function useAuth() {
         );
 
         updateCookie(data.token);
-        user.setStatus('authenticated');
+        setUserStatus('authenticated');
       })
       .catch(() => {
         pushNotification({
@@ -81,7 +83,7 @@ export function useAuth() {
   const login = async (address: string, signature: string) => {
     let loggedIn = false;
 
-    user.setStatus('loading');
+    setUserStatus('loading');
 
     api
       .post<LoginResponse>('/auth/login', {
@@ -96,8 +98,8 @@ export function useAuth() {
         );
 
         updateCookie(data.token);
+        setUserStatus('authenticated');
         router.replace('/dashboard');
-        user.setStatus('authenticated');
 
         loggedIn = true;
       })
@@ -112,17 +114,13 @@ export function useAuth() {
           withActions: false,
         });
 
-        user.setStatus('unauthenticated');
+        setUserStatus('unauthenticated');
 
         loggedIn = false;
       });
 
     return loggedIn;
   };
-
-  useEffectOnce(() => {
-    refresh();
-  });
 
   return { login, logout, refresh };
 }

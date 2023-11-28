@@ -77,7 +77,10 @@ export default function Selector<T extends string | string[]>({
           styles[`selector_${size}`],
           warn && styles.selector_warn,
           error && styles.selector_error,
-          isOpen && styles.selector_opened,
+          isOpen &&
+            ((warn && styles.selector_warn_opened) ||
+              (error && styles.selector_error_opened) ||
+              styles.selector_opened),
           disabled && styles.selector_disabled,
         )}
         onClick={openClose}

@@ -16,15 +16,11 @@ export default function NotificationComponent({
   noAnimation,
   withCloseIcon,
   showTime = 5000,
-  onClick,
-  onClose,
 }: {
   notification: Notification;
   noAnimation?: boolean;
   withCloseIcon?: boolean;
   showTime?: number;
-  onClick?: () => void;
-  onClose?: () => void;
 }) {
   const timeout = useRef<NodeJS.Timeout>();
   const timeLeft = useRef(showTime);
@@ -44,18 +40,18 @@ export default function NotificationComponent({
       setTimeout(() => setIsNewNotification(notification.id, false), 300);
     }
 
-    if (onClose) {
+    if (notification.onClose) {
       if (noAnimation) {
-        onClose();
+        notification.onClose();
       } else {
-        setTimeout(() => onClose(), 300);
+        setTimeout(notification.onClose, 300);
       }
     }
   };
 
   const handleClick = () => {
-    if (onClick) {
-      onClick();
+    if (notification.onClick) {
+      notification.onClick();
     }
 
     handleClose();
@@ -87,7 +83,7 @@ export default function NotificationComponent({
         styles.container,
         styles[`container_${isOpen || noAnimation ? 'open' : 'close'}`],
         notification.shown && styles.container_shown,
-        onClick && styles.container_clickable,
+        notification.onClick && styles.container_clickable,
       )}
       onMouseEnter={stopTimeout}
       onMouseLeave={resumeTimeout}

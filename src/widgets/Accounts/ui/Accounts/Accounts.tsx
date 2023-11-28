@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import { AccountCard, ExternalAccount, useAccounts } from '@entities/account';
+import { AccountCard, ExternalAccount, useAccountsStore } from '@entities/account';
 import { NewAccountButton } from '@features/account/create';
 import { Scope } from '@shared/ui';
 import EyeIcon from '@public/icons/eye.svg';
@@ -12,7 +12,7 @@ import EyeIcon from '@public/icons/eye.svg';
 import styles from './Accounts.module.scss';
 
 export default function Accounts() {
-  const accounts = useAccounts();
+  const internalAccounts = useAccountsStore((state) => state.internalAccounts);
   const [internal, setInternal] = useState(false);
 
   return (
@@ -33,12 +33,12 @@ export default function Accounts() {
         <div className={styles.accounts}>
           {!internal && <ExternalAccount withType />}
 
-          {accounts.map((account) => (
+          {internalAccounts.map((account) => (
             <AccountCard key={account.id} account={account} withSubaccounts withLink withType />
           ))}
         </div>
 
-        <NewAccountButton />
+        {internalAccounts.length === 0 && <NewAccountButton />}
       </div>
     </Scope>
   );

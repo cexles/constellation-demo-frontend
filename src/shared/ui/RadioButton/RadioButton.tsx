@@ -4,20 +4,20 @@ import clsx from 'clsx';
 
 import styles from './RadioButton.module.scss';
 
-export default function RadioButton<T extends string | number | symbol>({
+export default function RadioButton({
   value,
   options,
   disabled,
   onChange,
 }: {
-  value: T;
-  options: Record<T, string | React.ReactNode>;
+  value: string;
+  options: Record<string, string | React.ReactNode>;
   disabled?: boolean;
-  onChange: (newValue: T) => void;
+  onChange: (newValue: string) => void;
 }) {
   return (
     <>
-      {(Object.keys(options) as T[]).map((id) => (
+      {Object.keys(options).map((id) => (
         <div
           tabIndex={0}
           key={id.toString()}
@@ -29,13 +29,7 @@ export default function RadioButton<T extends string | number | symbol>({
           onClick={() => onChange(id)}
         >
           <div className={clsx(styles.mark, disabled && styles.mark_disabled)}>
-            <div
-              className={clsx(
-                styles.check,
-                id === value && styles.check_current,
-                disabled && styles.check_disabled,
-              )}
-            />
+            <div className={clsx(styles.check, id === value && styles.check_current)} />
           </div>
 
           <div className={styles.label}>{options[id]}</div>

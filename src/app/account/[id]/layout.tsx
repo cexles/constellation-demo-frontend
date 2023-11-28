@@ -21,7 +21,7 @@ export default function Layout({
       <div className={styles.account}>{segment === 'members' ? null : <Account id={id} />}</div>
 
       <div className={styles.section}>
-        {segment !== 'members' && <Actions />}
+        {segment !== 'members' && <Actions id={id} />}
 
         {children}
       </div>

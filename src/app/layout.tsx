@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Inter, Nunito_Sans } from 'next/font/google';
 
 import Providers from '@app/providers';
 import { NavigationLayout } from '@widgets/NavigationLayout';
@@ -6,6 +7,20 @@ import { NotificationsLayout } from '@widgets/NotificationsLayout';
 
 import '@rainbow-me/rainbowkit/styles.css';
 import '@app/styles/index.scss';
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500'],
+});
+
+const nunitoSans = Nunito_Sans({
+  variable: '--font-nunito-sans',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '600', '700'],
+});
 
 export default async function RootLayout({
   children,
@@ -15,7 +30,7 @@ export default async function RootLayout({
   notifications: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme="light" className={`${inter.variable} ${nunitoSans.variable}`}>
       <body>
         <Providers>
           <NotificationsLayout />

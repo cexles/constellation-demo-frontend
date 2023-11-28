@@ -8,12 +8,12 @@ export const routes: NavigationRoute[] = [
     subRoutes: [
       {
         pattern: /^\/dashboard$/i,
-        label: 'Main page',
+        label: 'Assets',
         href: '/dashboard',
       },
       {
         pattern: /^\/dashboard\/transaction$/i,
-        label: 'Transaction',
+        label: 'Transactions',
         href: '/dashboard/transaction',
       },
     ],
@@ -42,7 +42,7 @@ export const routes: NavigationRoute[] = [
       },
       {
         pattern: /^\/account\/[a-z0-9]+\/transaction$/i,
-        label: 'Transaction',
+        label: 'Transactions',
         hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/transaction`,
       },
       {

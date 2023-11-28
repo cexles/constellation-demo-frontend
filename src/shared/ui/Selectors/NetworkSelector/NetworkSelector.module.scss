@@ -18,16 +18,17 @@
 }
 
 .primary {
-  @include text_14;
-  @include text_medium;
-
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--black);
+  align-items: center;
+  gap: 8px;
 
-  & > div:nth-child(2) {
-    text-align: end;
+  & > img {
+    width: 20px;
+    height: 20px;
+  }
+
+  & > div > span {
+    color: var(--gray4);
   }
 }
 

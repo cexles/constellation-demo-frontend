@@ -1,5 +1,3 @@
-import { Transaction } from '@entities/transaction/model/types';
-
 export type AccountType = 'personal' | 'business' | 'external';
 
 export interface Account {
@@ -22,9 +20,7 @@ export interface Member {
   periodOfValidity?: [number, number];
 }
 
-export interface MemberActivityAction {
-  timestamp: number;
-  member: string;
-  account: string;
-  transaction: Transaction;
+export interface AccountsStore {
+  internalAccounts: Account[];
+  setInternalAccounts: (internalAccounts: Account[]) => void;
 }
