@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 import { OpenNotifications } from '@features/user/openNotifications';
 import { routes } from '@widgets/NavigationLayout/config/routes';
+import { NavigationRoute } from '@widgets/NavigationLayout/model/types';
 import { Profile } from '@widgets/Profile';
 import { NavigationTabs } from '@shared/ui';
 import LogoImage from '@public/logo.svg';
@@ -15,11 +16,10 @@ import styles from './Header.module.scss';
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const navigationRoutes = routes.filter((route) => route.label || route.keep);
-  const [currentRoute, setCurrentRoute] = useState('');
+  const [currentRoute, setCurrentRoute] = useState<NavigationRoute>();
 
   const changeTab = (newTab: string) => {
-    const route = navigationRoutes.find((r) => r.label === newTab);
+    const route = routes.find((r) => r.label === newTab);
 
     if (route?.href) {
       router.push(route.href);
@@ -27,10 +27,10 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const route = navigationRoutes.find((r) => r.pattern.test(pathname));
+    const route = routes.find((r) => r.pattern.test(pathname));
 
     if (!route?.keep) {
-      setCurrentRoute(route?.label || '');
+      setCurrentRoute(route);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
@@ -42,11 +42,9 @@ export default function Header() {
 
         <div className={styles.navigation}>
           <NavigationTabs
-            value={currentRoute}
+            value={currentRoute?.label || currentRoute?.mainPage || ''}
             options={Object.fromEntries(
-              navigationRoutes
-                .filter((route) => route.label)
-                .map((route) => [route.label, route.label]),
+              routes.filter((route) => route.label).map((route) => [route.label, route.label]),
             )}
             onChange={changeTab}
           />

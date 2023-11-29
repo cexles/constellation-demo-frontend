@@ -4,6 +4,7 @@ export interface Route {
   href?: string;
   withBack?: boolean;
   keep?: boolean;
+  mainPage?: string;
   hrefFn?: (pathname: string) => string;
 }
 

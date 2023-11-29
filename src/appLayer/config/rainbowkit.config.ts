@@ -1,4 +1,4 @@
-import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, connectorsForWallets, lightTheme, Theme } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet, ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createConfig } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
@@ -37,4 +37,12 @@ const wagmiConfig = createConfig({
   webSocketPublicClient,
 });
 
-export { chains, wagmiConfig };
+const theme: Theme = {
+  ...lightTheme(),
+  colors: {
+    ...lightTheme().colors,
+    accentColor: '#5850ec',
+  },
+};
+
+export { chains, wagmiConfig, theme };

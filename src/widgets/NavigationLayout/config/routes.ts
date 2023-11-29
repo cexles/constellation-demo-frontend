@@ -34,6 +34,7 @@ export const routes: NavigationRoute[] = [
 
   {
     pattern: /^\/account/i,
+    mainPage: 'Dashboard',
     subRoutes: [
       {
         pattern: /^\/account\/[a-z0-9]+$/i,
@@ -55,39 +56,48 @@ export const routes: NavigationRoute[] = [
   },
   {
     pattern: /^\/new-account$/i,
+    mainPage: 'Dashboard',
     withBack: true,
   },
   {
     pattern: /^\/deposit$/i,
+    mainPage: 'Dashboard',
     withBack: true,
   },
   {
     pattern: /^\/transfer$/i,
+    mainPage: 'Dashboard',
     withBack: true,
   },
   {
     pattern: /^\/privacy-policy$/i,
+    mainPage: 'Dashboard',
     withBack: true,
   },
   {
     pattern: /^\/terms$/i,
+    mainPage: 'Dashboard',
     withBack: true,
   },
 
   {
     pattern: /^\/edit-member\/[a-z0-9]+$/i,
+    mainPage: 'Dashboard',
     keep: true,
   },
   {
     pattern: /^\/new-member$/i,
+    mainPage: 'Dashboard',
     keep: true,
   },
   {
     pattern: /^\/notifications$/i,
+    mainPage: 'Dashboard',
     keep: true,
   },
   {
     pattern: /^\/transaction\/[a-z0-9]+$/i,
+    mainPage: 'Dashboard',
     keep: true,
   },
 ];

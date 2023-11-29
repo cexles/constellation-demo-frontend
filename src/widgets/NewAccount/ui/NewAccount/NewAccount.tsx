@@ -84,8 +84,7 @@ export default function NewAccount() {
                 </div>
 
                 <div className={styles.aboutText}>
-                  Lorem ipsum dolor sit amet consectetur. Et consequat gravida aliquet nisl sed
-                  mattis scelerisque in. Platea id dui eget bibendum
+                  Secure, convenient, transparent: Your personal account for financial management.
                 </div>
               </div>
             ) : (

@@ -38,9 +38,9 @@ export function useAuth() {
   const logout = () => {
     clearTimeout(refreshTimeout.current);
     updateCookie(undefined);
-    setUserStatus('unauthenticated');
-    setInternalAccounts([]);
     router.push('/auth');
+    setInternalAccounts([]);
+    setUserStatus('unauthenticated');
   };
 
   const refresh = async () => {

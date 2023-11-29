@@ -3,11 +3,10 @@ import {
   RainbowKitAuthenticationProvider,
   RainbowKitProvider,
   createAuthenticationAdapter,
-  lightTheme,
 } from '@rainbow-me/rainbowkit';
 import { SiweMessage, generateNonce } from 'siwe';
 
-import { chains, wagmiConfig } from '@app/config/rainbowkit.config';
+import { chains, theme, wagmiConfig } from '@app/config/rainbowkit.config';
 import { useAuth, useUserStore } from '@entities/user';
 
 export default function Web3Provider({ children }: { children: React.ReactNode }) {
@@ -45,7 +44,7 @@ export default function Web3Provider({ children }: { children: React.ReactNode }
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitAuthenticationProvider adapter={authenticationAdapter} status={userStatus}>
-        <RainbowKitProvider chains={chains} theme={lightTheme()}>
+        <RainbowKitProvider chains={chains} theme={theme}>
           {children}
         </RainbowKitProvider>
       </RainbowKitAuthenticationProvider>

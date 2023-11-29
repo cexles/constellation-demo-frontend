@@ -17,27 +17,26 @@ export default function Navigation() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentRoute, setCurrentRoute] = useState<NavigationRoute>();
+  const [withBack, setWithBack] = useState(false);
 
   useEffect(() => {
     const route = routes.find((r) => r.pattern.test(pathname));
 
     if (!route?.keep) {
       setCurrentRoute(route);
+      setWithBack(!!route?.withBack && searchParams.get('back') !== 'false');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  if (
-    (!currentRoute?.withBack || searchParams.get('back') === 'false') &&
-    (!currentRoute?.subRoutes || currentRoute?.subRoutes?.length === 0)
-  ) {
+  if (!withBack && (!currentRoute?.subRoutes || currentRoute?.subRoutes?.length === 0)) {
     return null;
   }
 
   return (
     <nav className={styles.navigation}>
       <div className={styles.wrapper}>
-        {currentRoute?.withBack && searchParams.get('back') !== 'false' && (
+        {withBack && (
           <div className={styles.back} onClick={router.back}>
             <Image src={ArrowLeftIcons} alt="Back" draggable="false" />
 
@@ -45,7 +44,7 @@ export default function Navigation() {
           </div>
         )}
 
-        {currentRoute?.withBack && currentRoute.subRoutes && currentRoute.subRoutes.length > 0 && (
+        {withBack && currentRoute?.subRoutes && currentRoute.subRoutes.length > 0 && (
           <div className={styles.separator} />
         )}
 
