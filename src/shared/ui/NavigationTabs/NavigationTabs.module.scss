@@ -29,7 +29,6 @@
     @include text_bold;
 
     color: var(--gray1) !important;
-    pointer-events: none;
   }
 
   &_disabled {

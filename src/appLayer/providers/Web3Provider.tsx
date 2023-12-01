@@ -43,7 +43,7 @@ export default function Web3Provider({ children }: { children: React.ReactNode }
 
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitAuthenticationProvider adapter={authenticationAdapter} status={userStatus}>
+      <RainbowKitAuthenticationProvider adapter={authenticationAdapter} status={userStatus!}>
         <RainbowKitProvider chains={chains} theme={theme}>
           {children}
         </RainbowKitProvider>

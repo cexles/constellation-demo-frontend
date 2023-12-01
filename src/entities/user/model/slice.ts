@@ -6,7 +6,6 @@ import { UserStore, NotificationsStore, Notification } from './types';
 export const useUserStore = create<UserStore>((set) => ({
   id: '',
   currency: 'USD',
-  status: 'unauthenticated',
   logout: () => set({}, true),
   updateCurrency: (currency: string) => set({ currency }),
   setStatus: (status: AuthenticationStatus) => set({ status }),

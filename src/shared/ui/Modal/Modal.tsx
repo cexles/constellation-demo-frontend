@@ -25,10 +25,7 @@ export default function Modal({
 
   const handleClose = () => {
     setOpen(false);
-
-    if (isOpen) {
-      setTimeout(router.back, 200);
-    }
+    setTimeout(router.back, 200);
   };
 
   useEffect(() => {

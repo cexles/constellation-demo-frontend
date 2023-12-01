@@ -1,5 +1,5 @@
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAccount } from 'wagmi';
 
 import { useAuth } from '@entities/user';
@@ -9,7 +9,6 @@ export default function AccountsProvider({ children }: { children: React.ReactNo
   const prevPathname = useRef('');
   const router = useRouter();
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
   const { internalAccounts } = useInternalAccounts();
   const { refresh, logout } = useAuth();
   useAccount({ onDisconnect: logout });
@@ -31,14 +30,6 @@ export default function AccountsProvider({ children }: { children: React.ReactNo
     refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return children;
 }

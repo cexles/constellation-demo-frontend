@@ -129,7 +129,7 @@
 .optionsContainer {
   @include card;
 
-  z-index: 1;
+  z-index: var(--z-popup);
   width: 100%;
   position: absolute;
   padding: 6px 4px 6px 6px;

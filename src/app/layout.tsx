@@ -25,9 +25,11 @@ const nunitoSans = Nunito_Sans({
 export default async function RootLayout({
   children,
   notifications,
+  transaction,
 }: {
   children: React.ReactNode;
   notifications: React.ReactNode;
+  transaction: React.ReactNode;
 }) {
   return (
     <html lang="en" data-theme="light" className={`${inter.variable} ${nunitoSans.variable}`}>
@@ -38,6 +40,7 @@ export default async function RootLayout({
           <NavigationLayout>
             {children}
             {notifications}
+            {transaction}
           </NavigationLayout>
         </Providers>
       </body>

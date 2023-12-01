@@ -1,3 +1,10 @@
+import { Transfer } from '@widgets/Transfer';
+import { PageWithTitle } from '@shared/ui';
+
 export default function TransferPage() {
-  return <div>TransferPage</div>;
+  return (
+    <PageWithTitle title="Transfer">
+      <Transfer />
+    </PageWithTitle>
+  );
 }

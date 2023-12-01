@@ -1,0 +1,171 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  @include card;
+
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 64px 48px 48px 48px;
+  border-radius: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+
+  & > button {
+    width: 50%;
+  }
+}
+
+.scope {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scopeTitle {
+  @include text_16;
+  @include text_bold;
+
+  color: var(--black);
+}
+
+.coin {
+  display: flex;
+  gap: 16px;
+
+  & > div:nth-child(1) {
+    width: 55%;
+  }
+
+  & > div:nth-child(2) {
+    width: 45%;
+  }
+}
+
+.variant {
+  display: flex;
+  gap: 16px;
+}
+
+.trade {
+  width: 32px;
+  height: 32px;
+  align-self: center;
+  filter: var(--gray4-filter);
+  transform: rotate(90deg);
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray5);
+}
+
+.max {
+  @include text_14;
+
+  color: var(--primary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+  }
+}
+
+.quotes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: rgba(var(--blue-rgb), 0.1);
+
+  & > img {
+    width: 16px;
+    height: 16px;
+    filter: var(--blue-filter);
+  }
+
+  & > div {
+    @include text_12;
+
+    color: var(--gray1);
+
+    & > span {
+      @include text_bold;
+    }
+  }
+}
+
+.commission {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commissionTitle {
+  @include text_14;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 100ms;
+
+  & > img {
+    width: 16px;
+    height: 16px;
+    filter: var(--primary-filter);
+    transform: rotate(-90deg);
+    transition: transform 200ms;
+  }
+
+  &:hover {
+    color: var(--primary-hover);
+
+    & > img {
+      filter: var(--primary-hover-filter);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+
+    & > img {
+      filter: var(--primary-active-filter);
+    }
+  }
+
+  &_open {
+    color: var(--primary-active);
+
+    & > img {
+      filter: var(--primary-active-filter);
+      transform: rotate(-270deg);
+    }
+
+    &:hover {
+      color: var(--primary-active);
+
+      & > img {
+        filter: var(--primary-active-filter);
+      }
+    }
+  }
+}
+
+.collapse {
+  transition: height 200ms;
+  overflow: hidden;
+}

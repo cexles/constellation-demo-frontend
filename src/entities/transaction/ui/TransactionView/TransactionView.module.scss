@@ -1,0 +1,83 @@
+@import '@shared/ui/reusable.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  filter: var(--gray4-filter);
+}
+
+.wallet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  @include text_16;
+  @include text_bold;
+
+  color: var(--black);
+}
+
+.coin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & > img {
+    width: 16px;
+    height: 16px;
+  }
+
+  & > div {
+    @include text_12;
+
+    color: var(--gray2);
+  }
+}
+
+.address {
+  @include text_14;
+  @include text_medium;
+
+  color: var(--black);
+  word-break: break-all;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amountContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.amount {
+  @include text_14;
+  @include text_medium;
+
+  color: var(--black);
+}
+
+.value {
+  @include text_12;
+
+  color: var(--gray2);
+}

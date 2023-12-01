@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 import { OpenNotifications } from '@features/user/openNotifications';
 import { routes } from '@widgets/NavigationLayout/config/routes';
@@ -38,7 +39,13 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <Image src={LogoImage} className={styles.logo} alt="logo" draggable="false" />
+        <Image
+          src={LogoImage}
+          className={clsx(styles.logo, pathname !== '/dashboard' && styles.logo_clickable)}
+          alt="logo"
+          draggable="false"
+          onClick={() => router.push('/dashboard')}
+        />
 
         <div className={styles.navigation}>
           <NavigationTabs

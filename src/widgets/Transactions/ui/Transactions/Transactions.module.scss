@@ -1,0 +1,174 @@
+@import '@shared/ui/reusable.scss';
+
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  & > div:nth-child(1) {
+    width: 330px;
+  }
+
+  & > div:nth-child(2) {
+    width: 200px;
+  }
+
+  & > div:nth-child(3) {
+    width: 240px;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.type {
+  @include text_14;
+  @include text_medium;
+
+  color: var(--gray1);
+  text-align: start;
+  text-transform: capitalize;
+}
+
+.typeImage {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  & > img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_send {
+    background-color: rgba(var(--red-rgb), 0.1);
+
+    & > img {
+      filter: var(--red-filter);
+    }
+  }
+
+  &_receive {
+    background-color: rgba(var(--green-rgb), 0.1);
+
+    & > img {
+      filter: var(--green-filter);
+    }
+  }
+
+  &_trade {
+    background-color: rgba(var(--blue-rgb), 0.1);
+
+    & > img {
+      filter: var(--blue-filter);
+    }
+  }
+}
+
+.timestamp {
+  @include text_12;
+
+  color: var(--gray3);
+  text-align: start;
+}
+
+.transaction {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &_send {
+    & > div:nth-child(3) {
+      display: none;
+    }
+
+    & > img {
+      display: none;
+    }
+  }
+
+  &_receive {
+    & > div:nth-child(1) {
+      display: none;
+    }
+
+    & > img {
+      display: none;
+    }
+  }
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.asset {
+  width: 26px;
+  height: 26px;
+
+  & > img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.amount {
+  @include text_16;
+  @include text_medium;
+
+  color: var(--black);
+  text-align: start;
+}
+
+.value {
+  @include text_12;
+
+  color: var(--gray3);
+  text-align: start;
+}
+
+.arrow {
+  width: 12px;
+  height: auto;
+  filter: var(--gray4-filter);
+  transform: rotate(90deg);
+}
+
+.wallets {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.address {
+  @include text_14;
+  @include text_medium;
+
+  color: var(--gray2);
+}
+
+.row {
+  & > div:nth-child(1) {
+    width: 25%;
+    justify-content: flex-start;
+  }
+
+  & > div:nth-child(2) {
+    width: 45%;
+    justify-content: flex-start;
+  }
+
+  & > div:nth-child(3) {
+    width: 30%;
+    justify-content: flex-end;
+  }
+}

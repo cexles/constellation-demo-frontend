@@ -1,0 +1,61 @@
+@import '@shared/ui/reusable.scss';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  @include text_12;
+
+  color: var(--gray3);
+}
+
+.id {
+  @include link;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & img {
+    width: 22px;
+    height: 22px;
+    filter: var(--primary-filter);
+    cursor: pointer;
+    transition: all 100ms;
+
+    &:hover {
+      filter: var(--primary-hover-filter);
+    }
+
+    &:active,
+    &:focus {
+      filter: var(--primary-active-filter);
+    }
+  }
+}
+
+.share {
+  @include text_16;
+  @include text_medium;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 8px;
+  color: var(--primary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:active,
+  &:focus {
+    color: var(--primary-active);
+  }
+}

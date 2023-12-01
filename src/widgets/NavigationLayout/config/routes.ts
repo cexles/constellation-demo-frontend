@@ -12,9 +12,9 @@ export const routes: NavigationRoute[] = [
         href: '/dashboard',
       },
       {
-        pattern: /^\/dashboard\/transaction$/i,
+        pattern: /^\/dashboard\/transactions$/i,
         label: 'Transactions',
-        href: '/dashboard/transaction',
+        href: '/dashboard/transactions',
       },
     ],
   },
@@ -42,14 +42,9 @@ export const routes: NavigationRoute[] = [
         hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}`,
       },
       {
-        pattern: /^\/account\/[a-z0-9]+\/transaction$/i,
+        pattern: /^\/account\/[a-z0-9]+\/transactions$/i,
         label: 'Transactions',
-        hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/transaction`,
-      },
-      {
-        pattern: /^\/account\/[a-z0-9]+\/members$/i,
-        label: 'Members',
-        hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/members`,
+        hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/transactions`,
       },
     ],
     withBack: true,
@@ -96,7 +91,7 @@ export const routes: NavigationRoute[] = [
     keep: true,
   },
   {
-    pattern: /^\/transaction\/[a-z0-9]+$/i,
+    pattern: /^\/transaction$/i,
     mainPage: 'Dashboard',
     keep: true,
   },

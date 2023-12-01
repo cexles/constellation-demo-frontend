@@ -3,7 +3,7 @@ import { AuthenticationStatus } from '@rainbow-me/rainbowkit';
 export interface UserStore {
   id: string;
   currency: string;
-  status: AuthenticationStatus;
+  status?: AuthenticationStatus;
   logout: () => void;
   updateCurrency: (currency: string) => void;
   setStatus: (status: AuthenticationStatus) => void;
