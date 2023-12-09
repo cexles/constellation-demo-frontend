@@ -1,47 +1,52 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import {useRouter, useSearchParams} from 'next/navigation';
+import {useEffect, useState} from 'react';
 import clsx from 'clsx';
 
-import { SwitchNetwork } from '@features/user/switchNetwork';
-import { AccountSelector } from '@entities/account';
+import {SwitchNetwork} from '@features/user/switchNetwork';
+import {AccountSelector} from '@entities/account';
 import {
   Button,
   Checkbox,
   CoinSelector,
   InfoCard,
   NetworkSelector,
-  RadioButton,
   TextInput,
 } from '@shared/ui';
-import { useCollapse } from '@shared/lib/useCollapse';
+import {useCollapse} from '@shared/lib/useCollapse';
 import SwapIcon from '@public/icons/swap.svg';
 import ArrowLeftIcon from '@public/icons/arrow-left.svg';
 import CycleIcon from '@public/icons/cycle.svg';
 
 import styles from './Transfer.module.scss';
+import {useNativeTransfer} from "@entities/transfer/api/useNativeTransfer.ts";
+import {useNetwork} from "wagmi";
 
 export default function Transfer() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [variant, setVariant] = useState('account');
+  const [variant] = useState('account');
   const [fromAccount, setFromAccount] = useState(searchParams.get('address') || '');
   const [fromCoin, setFromCoin] = useState('');
-  const [toAccount, setToAccount] = useState('');
+  //const [toAccount, setToAccount] = useState('');
   const [toCoin, setToCoin] = useState('');
   const [toNetwork, setToNetwork] = useState('');
   const [toAddress, setToAddress] = useState('');
-  const [toBank, setToBank] = useState('');
-  const [amount, setAmount] = useState(0);
+  //const [toBank, setToBank] = useState('');
+  const [amount, setAmount] = useState('');
   const [saveTemplate, setSaveTemplate] = useState(false);
   const [quotesRefetchInterval, setQuotesRefetchInterval] = useState(60);
-  const { collapseRef, collapseHeight, collapse } = useCollapse();
+  const {collapseRef, collapseHeight, collapse} = useCollapse();
+  const {chain} = useNetwork()
+  const {createNativeTransfer} = useNativeTransfer(searchParams.get('address') as `0x${string}`);
 
-  const setMaxAmount = () => {
-    setAmount(1000);
-  };
+  const makeTransfer = () => {
+    if (chain && parseInt(toNetwork) === chain.id) {
+      createNativeTransfer(toAddress, amount)
+    }
+  }
 
   useEffect(() => {
     if (quotesRefetchInterval > 0) {
@@ -63,66 +68,54 @@ export default function Transfer() {
         />
 
         <div className={styles.coin}>
-          <CoinSelector value={fromCoin} onChange={setFromCoin} />
+          <CoinSelector value={fromCoin} onChange={setFromCoin}/>
 
-          <SwitchNetwork />
+          <SwitchNetwork/>
         </div>
 
-        <Image src={SwapIcon} className={styles.trade} alt="Transfer" draggable="false" />
+        <Image src={SwapIcon} className={styles.trade} alt="Transfer" draggable="false"/>
 
         <div className={styles.scopeTitle}>To</div>
 
+        {/*
         <div className={styles.variant}>
           <RadioButton
             value={variant}
-            options={{ account: 'Account', wallet: 'Wallet', bank: 'ID Bank Account' }}
+            options={{account: 'Account', wallet: 'Wallet'}}
             onChange={setVariant}
           />
         </div>
 
+        {variant === 'wallet' && (
+          <TextInput placeholder="Address" value={toAddress} onChange={setToAddress}/>
+        )}
+        */}
+
         {variant === 'account' && (
           <>
-            <AccountSelector
-              placeholder="Select account"
-              value={toAccount}
-              onChange={setToAccount}
-            />
+            <TextInput placeholder="Address" value={toAddress} onChange={setToAddress}/>
 
             <div className={styles.coin}>
-              <CoinSelector value={toCoin} onChange={setToCoin} />
+              <CoinSelector value={toCoin} onChange={setToCoin}/>
 
-              <NetworkSelector variant="extended" value={toNetwork} onChange={setToNetwork} />
+              <NetworkSelector variant="extended" value={toNetwork} onChange={setToNetwork}/>
             </div>
           </>
         )}
-
-        {variant === 'wallet' && (
-          <TextInput placeholder="Address" value={toAddress} onChange={setToAddress} />
-        )}
-
-        {variant === 'bank' && (
-          <TextInput placeholder="Bank account" value={toBank} onChange={setToBank} />
-        )}
       </div>
 
-      <div className={styles.separator} />
+      <div className={styles.separator}/>
 
       <div className={styles.scope}>
         <TextInput
           placeholder="Amount"
           value={amount}
           size="l"
-          type="number"
-          element={
-            <div className={styles.max} onClick={setMaxAmount}>
-              max
-            </div>
-          }
-          onChange={(newValue: string) => setAmount(parseFloat(newValue))}
+          onChange={(newValue: string) => setAmount(newValue)}
         />
 
         <div className={styles.quotes}>
-          <Image src={CycleIcon} alt="Cycle" draggable="false" />
+          <Image src={CycleIcon} alt="Cycle" draggable="false"/>
 
           <div>
             New quotes in{' '}
@@ -138,10 +131,10 @@ export default function Transfer() {
             onClick={collapse}
           >
             <div>Commission</div>
-            <Image src={ArrowLeftIcon} alt="Expand" draggable="false" />
+            <Image src={ArrowLeftIcon} alt="Expand" draggable="false"/>
           </div>
 
-          <div className={styles.collapse} style={{ height: collapseHeight }}>
+          <div className={styles.collapse} style={{height: collapseHeight}}>
             <div ref={collapseRef}>
               <InfoCard
                 rows={[
@@ -155,14 +148,14 @@ export default function Transfer() {
         </div>
       </div>
 
-      <Checkbox label="Save template" value={saveTemplate} onChange={setSaveTemplate} />
+      <Checkbox label="Save template" value={saveTemplate} onChange={setSaveTemplate}/>
 
       <div className={styles.actions}>
         <Button variant="outlined" onClick={router.back}>
           Cancel
         </Button>
 
-        <Button variant="contained" onClick={() => {}}>
+        <Button variant="contained" onClick={makeTransfer}>
           Transfer
         </Button>
       </div>
