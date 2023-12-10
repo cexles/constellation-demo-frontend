@@ -1,7 +1,6 @@
 import {useRouter} from 'next/navigation';
 import {useEffect} from 'react';
 import {
-  useContractRead,
   useContractWrite,
   useNetwork,
 } from 'wagmi';
@@ -11,9 +10,7 @@ import {ethers, Wallet} from "ethers";
 import {useNotificationsStore} from '@entities/user';
 import {networks} from '@shared/config/networks';
 import {ACCOUNTS_CONTRACT_ABI, ACCOUNTS_CONTRACT_ADDRESS} from "@shared/config/contracts/accountsContract.ts";
-import {ACCOUNT_CONTRACT_ABI} from "@shared/config/contracts/accountContract.ts";
 import {JsonRpcProvider} from "@ethersproject/providers";
-import {AddressZero} from "@ethersproject/constants";
 
 export function useTokenBridge(account: `0x${string}`) {
   const {chain} = useNetwork();
@@ -50,6 +47,19 @@ export function useTokenBridge(account: `0x${string}`) {
         }
       })();
 
+      const linkSelector = (() => {
+        switch (chainId) {
+          case "80001":
+            return "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
+          case "11155111":
+            return "0x779877A7B0D9E8603169DdbD7836e478b4624789";
+          case "97":
+            return "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06";
+          default:
+            return "0"
+        }
+      })();
+
       // const userNonce = useContractRead({
       //   address: ACCOUNTS_CONTRACT_ADDRESS,
       //   abi: ACCOUNT_CONTRACT_ABI,
@@ -58,13 +68,13 @@ export function useTokenBridge(account: `0x${string}`) {
       // })
 
       const bridgeParams = {
-        userAddress: '0x27E5E6A78C25574a4442B2a8bc9bDf497cb7EfbC',
+        userAddress: account,
         userNonce: 0,
         srcTokenAddress: token,
         srcTokenAmount: ethers.utils.parseUnits(amount, 18),
         dstChainSelector: chainSelector,
-        dstExecutor: '0x833674CAAf4A066B883C9C13E676631cf18b8F45',
-        dstTokenAddress: '0x38C994c54A26B8C3FcDE220c043e636FB9DCd2D8',
+        dstExecutor: '0x128e8E688F7186b4a57D7D4A499933447adf8B89',
+        dstTokenAddress: '0x8Bf6830D28a10a19F3B138C8d2744a45f32A533F',
         dstTokenAmount: ethers.utils.parseUnits(amount, 18),
         dstReceiver: receiver,
       };
@@ -72,12 +82,11 @@ export function useTokenBridge(account: `0x${string}`) {
       const srcDomain = {
         name: "Transshipment",
         version: "0.0.1",
-        chainId: 80001,
+        chainId: Number(chainId),
         verifyingContract: ACCOUNTS_CONTRACT_ADDRESS,
       };
 
       const typesForBridge = {
-        // types === typesForBridge
         BridgeParams: [
           {
             name: "userAddress",
@@ -123,7 +132,7 @@ export function useTokenBridge(account: `0x${string}`) {
         const fees = ethers.utils.parseUnits("0.5", 18);
 
         write({
-          args: [managerSignature, '0x326C977E6efc84E512bB9C30f76E30c160eD06FB', 200000, fees, bridgeParams],
+          args: [managerSignature, linkSelector, 200000, fees, bridgeParams],
           //value: ethers.utils.parseUnits("0.2", 18).toBigInt()
         });
       });
@@ -164,7 +173,7 @@ async function sign(domain: { name: string; version: string; chainId: number; ve
     type: string;
   })[];
 }, message: { userAddress: string; userNonce: number; srcTokenAddress: string; srcTokenAmount: ethers.BigNumber; dstChainSelector: string; dstExecutor: string; dstTokenAddress: string; dstTokenAmount: ethers.BigNumber; dstReceiver: string; }): Promise<string> {
-  const provider = new JsonRpcProvider('https://rpc.ankr.com/polygon_mumbai/6105df9afeb9b3103093f6cb684b5d61410bc962a1bb51202ea05a88bbdf8594');
+  const provider = new JsonRpcProvider('https://rpc.ankr.com/polygon_mumbai');
   const wallet = new Wallet('1897cbedf7f07fe1635edc1e63adf88eaea19fbbf84e60344e77a92ebafaf149', provider);
 
   const typedData = {

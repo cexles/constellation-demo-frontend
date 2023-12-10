@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { ConnectWallet } from '@features/user/connectWallet';
 import BackgroundImage from '@public/images/background.png';
@@ -17,10 +16,10 @@ export default function AuthPage() {
 
         <ConnectWallet />
 
-        <div className={styles.links}>
-          <Link href="/terms">Terms</Link>
-          <Link href="/privacy-policy">Privacy Policy</Link>
-        </div>
+        {/*<div className={styles.links}>*/}
+        {/*  <Link href="/terms">Terms</Link>*/}
+        {/*  <Link href="/privacy-policy">Privacy Policy</Link>*/}
+        {/*</div>*/}
       </div>
     </div>
   );

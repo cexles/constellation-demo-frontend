@@ -50,10 +50,10 @@ export default function Transfer() {
       if (fromCoin === toCoin && (fromCoin === 'MATIC' || fromCoin === "ETH" || fromCoin === "AVAX")) {
         createNativeTransfer(toAddress, amount)
       } else {
-        createNativeTokenTransfer(toAddress, amount, '0x500Fb54276A6246A1a71040C8b6A0e3E6182317d')
+        createNativeTokenTransfer(toAddress, amount, '0x8Bf6830D28a10a19F3B138C8d2744a45f32A533F')
       }
     } else {
-      createTokenBridge(toAddress, amount, toNetwork, '0x500Fb54276A6246A1a71040C8b6A0e3E6182317d')
+      createTokenBridge(toAddress, amount, toNetwork, '0x8Bf6830D28a10a19F3B138C8d2744a45f32A533F')
     }
   }
 

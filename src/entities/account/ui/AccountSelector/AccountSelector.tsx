@@ -24,7 +24,7 @@ export default function AccountSelector({
     <Selector
       value={value}
       placeholder={placeholder}
-      options={Object.fromEntries(internalAccounts.map((account) => ["0x27E5E6A78C25574a4442B2a8bc9bDf497cb7EfbC", "0x27E5E6A78C25574a4442B2a8bc9bDf497cb7EfbC"]))}
+      options={Object.fromEntries(internalAccounts.map((account) => [account.id, account.name]))}
       size={size}
       direction={direction}
       disabled={disabled}
