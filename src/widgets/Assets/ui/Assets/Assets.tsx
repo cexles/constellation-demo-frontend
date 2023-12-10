@@ -9,7 +9,6 @@ import { useUserStore } from '@entities/user';
 import { Asset, AssetMeta, useAssetsTable } from '@entities/asset';
 import {
   DefaultTable,
-  DeltaIndicator,
   NetworkSelector,
   NoData,
   Scope,
@@ -60,20 +59,20 @@ export default function Assets({ id }: { id?: string }) {
             row.original.symbol,
           ),
       },
-      {
-        header: 'Value',
-        id: 'value',
-        accessorKey: 'value',
-        cell: ({ row }) =>
-          formatNumberWithCurrency(formatNumberWithSeparator(row.original.value), userCurrency),
-      },
-      {
-        header: 'Last 24h',
-        id: 'delta',
-        accessorKey: 'delta',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        cell: ({ row }) => <DeltaIndicator delta={row.original.delta} />,
-      },
+      // {
+      //   header: 'Value',
+      //   id: 'value',
+      //   accessorKey: 'value',
+      //   cell: ({ row }) =>
+      //     formatNumberWithCurrency(formatNumberWithSeparator(row.original.value), userCurrency),
+      // },
+      // {
+      //   header: 'Last 24h',
+      //   id: 'delta',
+      //   accessorKey: 'delta',
+      //   // eslint-disable-next-line react/no-unstable-nested-components
+      //   cell: ({ row }) => <DeltaIndicator delta={row.original.delta} />,
+      // },
     ],
     [userCurrency],
   );

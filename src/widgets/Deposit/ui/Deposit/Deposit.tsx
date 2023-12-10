@@ -34,7 +34,7 @@ export default function Deposit() {
           <div className={styles.account}>
             <AccountSelector value={account} onChange={setAccount} />
 
-            <SwitchNetwork variant="extended" />
+            <SwitchNetwork/>
           </div>
         </FormProgress>
 
@@ -63,9 +63,7 @@ export default function Deposit() {
       </div>
 
       <div className={styles.info}>
-        Lorem ipsum dolor sit amet consectetur. Et consequat gravida aliquet nisl sed mattis
-        scelerisque in. Platea id dui eget bibendum. Lorem ipsum dolor sit amet consectetur. Et
-        consequat gravida aliquet nisl sed mattis scelerisque in. Platea id dui eget bibendum{' '}
+        Get the deposit address for crypto and deposit via the blockchain.{' '}
       </div>
     </div>
   );

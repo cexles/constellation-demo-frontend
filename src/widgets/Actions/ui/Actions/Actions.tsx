@@ -22,15 +22,15 @@ export default function Actions({ id }: { id?: string }) {
   return (
     <Scope
       title="Actions"
-      actions={
-        <Link href="/all-actions">
-          <div className={styles.all}>
-            <div>All actions</div>
-
-            <Image src={ArrowLeftIcon} alt="All actions" draggable="false" />
-          </div>
-        </Link>
-      }
+      // actions={
+      //   <Link href="/all-actions">
+      //     <div className={styles.all}>
+      //       <div>All actions</div>
+      //
+      //       <Image src={ArrowLeftIcon} alt="All actions" draggable="false" />
+      //     </div>
+      //   </Link>
+      // }
     >
       <div className={styles.container}>
         {actions.map((action) => (

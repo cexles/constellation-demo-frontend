@@ -28,7 +28,7 @@ export default function Account({ id }: { id: string }) {
   if (internalAccount) {
     return (
       <div className={styles.container}>
-        <BalanceCard account={internalAccount} />
+        {/*<BalanceCard account={internalAccount} />*/}
 
         <div className={styles.account}>
           <Scope title="Main account" type="secondary">

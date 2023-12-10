@@ -11,21 +11,21 @@ export const routes: NavigationRoute[] = [
         label: 'Assets',
         href: '/dashboard',
       },
-      {
-        pattern: /^\/dashboard\/transactions$/i,
-        label: 'Transactions',
-        href: '/dashboard/transactions',
-      },
+      // {
+      //   pattern: /^\/dashboard\/transactions$/i,
+      //   label: 'Transactions',
+      //   href: '/dashboard/transactions',
+      // },
     ],
   },
-  {
-    pattern: /^\/investment/i,
-    href: '/investment',
-  },
-  {
-    pattern: /^\/protocol/i,
-    href: '/protocol',
-  },
+  // {
+  //   pattern: /^\/investment/i,
+  //   href: '/investment',
+  // },
+  // {
+  //   pattern: /^\/protocol/i,
+  //   href: '/protocol',
+  // },
   {
     pattern: /^\/documentation/i,
     label: 'Documentation',
@@ -41,11 +41,11 @@ export const routes: NavigationRoute[] = [
         label: 'Account info',
         hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}`,
       },
-      {
-        pattern: /^\/account\/[a-z0-9]+\/transactions$/i,
-        label: 'Transactions',
-        hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/transactions`,
-      },
+      // {
+      //   pattern: /^\/account\/[a-z0-9]+\/transactions$/i,
+      //   label: 'Transactions',
+      //   hrefFn: (pathname: string) => `/account/${pathname.split('/')[2]}/transactions`,
+      // },
     ],
     withBack: true,
   },
@@ -64,35 +64,35 @@ export const routes: NavigationRoute[] = [
     mainPage: 'Dashboard',
     withBack: true,
   },
-  {
-    pattern: /^\/privacy-policy$/i,
-    mainPage: 'Dashboard',
-    withBack: true,
-  },
-  {
-    pattern: /^\/terms$/i,
-    mainPage: 'Dashboard',
-    withBack: true,
-  },
+  // {
+  //   pattern: /^\/privacy-policy$/i,
+  //   mainPage: 'Dashboard',
+  //   withBack: true,
+  // },
+  // {
+  //   pattern: /^\/terms$/i,
+  //   mainPage: 'Dashboard',
+  //   withBack: true,
+  // },
 
-  {
-    pattern: /^\/edit-member\/[a-z0-9]+$/i,
-    mainPage: 'Dashboard',
-    keep: true,
-  },
-  {
-    pattern: /^\/new-member$/i,
-    mainPage: 'Dashboard',
-    keep: true,
-  },
+  // {
+  //   pattern: /^\/edit-member\/[a-z0-9]+$/i,
+  //   mainPage: 'Dashboard',
+  //   keep: true,
+  // },
+  // {
+  //   pattern: /^\/new-member$/i,
+  //   mainPage: 'Dashboard',
+  //   keep: true,
+  // },
   {
     pattern: /^\/notifications$/i,
     mainPage: 'Dashboard',
     keep: true,
   },
-  {
-    pattern: /^\/transaction$/i,
-    mainPage: 'Dashboard',
-    keep: true,
-  },
+  // {
+  //   pattern: /^\/transaction$/i,
+  //   mainPage: 'Dashboard',
+  //   keep: true,
+  // },
 ];

@@ -11,13 +11,13 @@ export default function Footer() {
         <div className={styles.links} />
 
         <div className={styles.links}>
-          <Link href="/terms">
-            <div className={styles.link}>Terms</div>
-          </Link>
+          {/*<Link href="/terms">*/}
+          {/*  <div className={styles.link}>Terms</div>*/}
+          {/*</Link>*/}
 
-          <Link href="/privacy-policy">
-            <div className={styles.link}>Privacy Policy</div>
-          </Link>
+          {/*<Link href="/privacy-policy">*/}
+          {/*  <div className={styles.link}>Privacy Policy</div>*/}
+          {/*</Link>*/}
         </div>
       </div>
     </footer>

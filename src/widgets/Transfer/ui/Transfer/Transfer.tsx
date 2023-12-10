@@ -23,6 +23,7 @@ import CycleIcon from '@public/icons/cycle.svg';
 import styles from './Transfer.module.scss';
 import {useNativeTransfer} from "@entities/transfer/api/useNativeTransfer.ts";
 import {useNetwork} from "wagmi";
+import {useNativeTokenTransfer, useTokenBridge} from "@entities/transfer";
 
 export default function Transfer() {
   const router = useRouter();
@@ -36,16 +37,29 @@ export default function Transfer() {
   const [toAddress, setToAddress] = useState('');
   //const [toBank, setToBank] = useState('');
   const [amount, setAmount] = useState('');
-  const [saveTemplate, setSaveTemplate] = useState(false);
+  //const [saveTemplate, setSaveTemplate] = useState(false);
   const [quotesRefetchInterval, setQuotesRefetchInterval] = useState(60);
-  const {collapseRef, collapseHeight, collapse} = useCollapse();
+  //const {collapseRef, collapseHeight, collapse} = useCollapse();
   const {chain} = useNetwork()
   const {createNativeTransfer} = useNativeTransfer(searchParams.get('address') as `0x${string}`);
+  const {createNativeTokenTransfer} = useNativeTokenTransfer(searchParams.get('address') as `0x${string}`);
+  const {createTokenBridge} = useTokenBridge(searchParams.get('address') as `0x${string}`);
 
   const makeTransfer = () => {
     if (chain && parseInt(toNetwork) === chain.id) {
-      createNativeTransfer(toAddress, amount)
+      if (fromCoin === toCoin && (fromCoin === 'MATIC' || fromCoin === "ETH" || fromCoin === "AVAX")) {
+        createNativeTransfer(toAddress, amount)
+      } else {
+        createNativeTokenTransfer(toAddress, amount, '0x500Fb54276A6246A1a71040C8b6A0e3E6182317d')
+      }
+    } else {
+      createTokenBridge(toAddress, amount, toNetwork, '0x500Fb54276A6246A1a71040C8b6A0e3E6182317d')
     }
+  }
+
+  const setToken = (tokenName: string) => {
+    setToCoin(tokenName)
+    setFromCoin(tokenName)
   }
 
   useEffect(() => {
@@ -68,7 +82,7 @@ export default function Transfer() {
         />
 
         <div className={styles.coin}>
-          <CoinSelector value={fromCoin} onChange={setFromCoin}/>
+          <CoinSelector value={fromCoin} onChange={setToken}/>
 
           <SwitchNetwork/>
         </div>
@@ -96,9 +110,9 @@ export default function Transfer() {
             <TextInput placeholder="Address" value={toAddress} onChange={setToAddress}/>
 
             <div className={styles.coin}>
-              <CoinSelector value={toCoin} onChange={setToCoin}/>
+              <CoinSelector value={toCoin} onChange={setToken}/>
 
-              <NetworkSelector variant="extended" value={toNetwork} onChange={setToNetwork}/>
+              <NetworkSelector value={toNetwork} onChange={setToNetwork}/>
             </div>
           </>
         )}
@@ -114,41 +128,41 @@ export default function Transfer() {
           onChange={(newValue: string) => setAmount(newValue)}
         />
 
-        <div className={styles.quotes}>
-          <Image src={CycleIcon} alt="Cycle" draggable="false"/>
+        {/*<div className={styles.quotes}>*/}
+        {/*  <Image src={CycleIcon} alt="Cycle" draggable="false"/>*/}
 
-          <div>
-            New quotes in{' '}
-            <span>{`${Math.floor(quotesRefetchInterval / 60)}:${
-              quotesRefetchInterval - Math.floor(quotesRefetchInterval / 60) * 60
-            }`}</span>
-          </div>
-        </div>
+        {/*  <div>*/}
+        {/*    New quotes in{' '}*/}
+        {/*    <span>{`${Math.floor(quotesRefetchInterval / 60)}:${*/}
+        {/*      quotesRefetchInterval - Math.floor(quotesRefetchInterval / 60) * 60*/}
+        {/*    }`}</span>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
-        <div className={styles.commission}>
-          <div
-            className={clsx(styles.commissionTitle, collapseHeight && styles.commissionTitle_open)}
-            onClick={collapse}
-          >
-            <div>Commission</div>
-            <Image src={ArrowLeftIcon} alt="Expand" draggable="false"/>
-          </div>
+        {/*<div className={styles.commission}>*/}
+        {/*  <div*/}
+        {/*    className={clsx(styles.commissionTitle, collapseHeight && styles.commissionTitle_open)}*/}
+        {/*    onClick={collapse}*/}
+        {/*  >*/}
+        {/*    <div>Commission</div>*/}
+        {/*    <Image src={ArrowLeftIcon} alt="Expand" draggable="false"/>*/}
+        {/*  </div>*/}
 
-          <div className={styles.collapse} style={{height: collapseHeight}}>
-            <div ref={collapseRef}>
-              <InfoCard
-                rows={[
-                  ['Other information1', '345hjKkjghL34502Jh32kkj2j4j'],
-                  ['Other information2', '345hjKkjghL34502Jh32kkj2j4j'],
-                  ['Other information3', '345hjKkjghL34502Jh32kkj2j4j'],
-                ]}
-              />
-            </div>
-          </div>
-        </div>
+        {/*  <div className={styles.collapse} style={{height: collapseHeight}}>*/}
+        {/*    <div ref={collapseRef}>*/}
+        {/*      <InfoCard*/}
+        {/*        rows={[*/}
+        {/*          ['Other information1', '345hjKkjghL34502Jh32kkj2j4j'],*/}
+        {/*          ['Other information2', '345hjKkjghL34502Jh32kkj2j4j'],*/}
+        {/*          ['Other information3', '345hjKkjghL34502Jh32kkj2j4j'],*/}
+        {/*        ]}*/}
+        {/*      />*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
 
-      <Checkbox label="Save template" value={saveTemplate} onChange={setSaveTemplate}/>
+      {/*<Checkbox label="Save template" value={saveTemplate} onChange={setSaveTemplate}/>*/}
 
       <div className={styles.actions}>
         <Button variant="outlined" onClick={router.back}>
